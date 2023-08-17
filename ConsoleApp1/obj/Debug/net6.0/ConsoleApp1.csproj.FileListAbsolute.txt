@@ -13,3 +13,17 @@ C:\Users\paj50\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\refint\Cons
 C:\Users\paj50\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.pdb
 C:\Users\paj50\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.genruntimeconfig.cache
 C:\Users\paj50\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\ref\ConsoleApp1.dll
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.exe
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.deps.json
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.runtimeconfig.json
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.dll
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.pdb
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.AssemblyInfo.cs
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.dll
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\obj\Debug\net6.0\refint\ConsoleApp1.dll
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.pdb
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.genruntimeconfig.cache
+C:\Users\JacobPrice\Documents\GitHub\WizardBattler\ConsoleApp1\obj\Debug\net6.0\ref\ConsoleApp1.dll

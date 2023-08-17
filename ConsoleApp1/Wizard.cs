@@ -32,20 +32,23 @@ namespace ConsoleApp1
             Console.WriteLine($"The Wizard {Name} was born");
             Health = 15;
             Speed = rnd.Next(1, 5);
-            Console.WriteLine($"Has {Health} health");
+            Console.WriteLine($"{Name} has {Health} health");
         }
 
         public void Attack(Wizard enemy)
         {
-            if(!Concentration) { enemy.HealthLost += rnd.Next(1, 4); }
-            else { enemy.HealthLost += rnd.Next(2, 7); }
+            int roll = rnd.Next(1, 4);
+            int croll = rnd.Next(2, 7);
+            if (!Concentration) { enemy.HealthLost += roll; Console.WriteLine($"\n {Name} cast Fireball! it deals {roll} damage!"); }
+            else { enemy.HealthLost += croll; Console.WriteLine($"\n {Name} cast FIRESTORM! it deals {croll} damage!"); }
             Speed = 2;
         }
 
         public void Defend()
         {
-            if (!Concentration) {DamageNegated += rnd.Next(2, 4); }
-            else { Dodged = true; }
+            int roll = rnd.Next(2, 4);
+            if (!Concentration) { DamageNegated += roll; Console.WriteLine($"\n {Name} cast Shield! it negates {roll} damage!"); }
+            else { Dodged = true; Console.WriteLine($"\n {Name} casts IronSkin! It negates all damage!"); }
             Speed = 1;
             Concentration = false;
 
@@ -58,6 +61,7 @@ namespace ConsoleApp1
             {
                 if (rnd.Next(0, 2) == 1)
                 {
+                    Console.WriteLine($"\n {Name} Dodges all damage!");
                     Dodged = true;
                 }
             }
@@ -65,7 +69,8 @@ namespace ConsoleApp1
             {
                 if (rnd.Next(0, 4) > 0)
                 {
-                    Dodged = false;
+                    Console.WriteLine($"\n {Name} Dodges all damage!");
+                    Dodged = true;
                 }
                 
             }
@@ -76,8 +81,10 @@ namespace ConsoleApp1
 
         public void Hinder(Wizard enemy)
         {
-            if (!Concentration) { enemy.SpeedLost += rnd.Next(1, 4); }
-            else { enemy.SpeedLost += rnd.Next(2, 7); }
+            int roll = rnd.Next(1, 4);
+            int croll = rnd.Next(2, 7);
+            if (!Concentration) { enemy.SpeedLost += roll; Console.WriteLine($"\n {Name} casts Frost Ray! It slows the enemy down a little!"); }
+            else { enemy.SpeedLost += croll; Console.WriteLine($"\n {Name} casts Time Dialation! It slows the enemy down a lot!"); }
 
            
             Speed = 2;
@@ -86,6 +93,7 @@ namespace ConsoleApp1
 
         public void Concentrate()
         {
+            Console.WriteLine($"\n {Name} is Concentrating on his next move!");
             Concentration = true;
             Speed = 4;
         }
@@ -95,7 +103,7 @@ namespace ConsoleApp1
             
             if(!Concentration)
             {
-                Console.WriteLine($"{Name} Casts Wild Magic Without Concentration");
+                Console.WriteLine($"\n {Name} Casts Wild Magic Without Concentration");
                 if (rnd.Next(0,4) == 3) 
                 {
                     Dodged = true;
@@ -103,22 +111,23 @@ namespace ConsoleApp1
                 }
                 else
                 {
-                    Console.WriteLine("it fails!");
+                    Console.WriteLine("Nothing Happens!");
                 }
             }
 
             else
             {
                 Concentration = false;
-                Console.WriteLine($"{Name} Casts Wild Magic With Concentration");
+                Console.WriteLine($"\n {Name} Casts Wild Magic With Concentration");
                 if (rnd.Next(0,4) >= 2)
                 {
+                    Console.WriteLine($"It Works!");
                     Dodged = true;
                     WildMagicRoll();
                 }
                 else
                 {
-                    Console.WriteLine("it fails!");
+                    Console.WriteLine("Nothing Happens!");
                 }
             }
 
@@ -128,39 +137,57 @@ namespace ConsoleApp1
 
         public void WildMagicRoll()
         {
-            Console.WriteLine($"{Name} successfully casted wildMagic!");
            int roll =  rnd.Next(0,3);
 
-            if(roll == 0) { SpeedGained += 3; Console.WriteLine($"Speed!"); }
-            if(roll == 1) { Concentration = true; Console.WriteLine($"Concentration!"); }
-            if(roll == 2) { HealthGained += rnd.Next(1, 4); Console.WriteLine($"Health!"); }
+            if(roll == 0) { SpeedGained += 3; Console.WriteLine($"Gained 3 Speed!"); }
+            if(roll == 1) { Concentration = true; Console.WriteLine($"Gained Concentration!"); }
+            if(roll == 2) { HealthGained += roll; Console.WriteLine($"Gained {roll} Health!"); }
         }
 
         public void Describe()
         {
-            Console.WriteLine($"\n {Name}'s Stats:");
+           
             
-            Console.WriteLine($"Speed - {Speed} \n Speed Lost - {SpeedLost} \n Dodged - {Dodged} \n Health Lost - {HealthLost}  \n Damage Negated - {DamageNegated}\n Health Gained - {HealthGained} \n Concentration - {Concentration} \n");
+            Console.WriteLine($"\n {Name}'s Health - {Health}");
         }
 
         public void EndRound()
         {
             if(!Dodged)
             {
-                Console.WriteLine($"{Name} took {Math.Clamp(HealthLost - DamageNegated, 0, 10)} damage!");
+                if (Math.Clamp(HealthLost - DamageNegated, 0, 10) > 0)
+                {
+                    Console.WriteLine($"\n {Name} took {Math.Clamp(HealthLost - DamageNegated, 0, 10)} damage!");
+                    
+                }
+
                 Health = (Health - Math.Clamp(HealthLost - DamageNegated, 0, 10) + HealthGained);
                 Speed = (Speed -  SpeedLost + SpeedGained);
 
+                if(Math.Clamp(HealthLost - DamageNegated, 0, 10) + HealthGained != 0)
+                {
+                    Describe();
+                }
             }
             else
             {
                 Console.WriteLine($"{Name} dodged!");
                 Health += HealthGained;
                 Speed += SpeedGained;
+
+                if (Math.Clamp(HealthLost - DamageNegated, 0, 10) + HealthGained != 0)
+                {
+                    Describe();
+                }
             }
-            Console.WriteLine($"{Name} Gained {HealthGained} health from wild magic!");
-            Console.WriteLine($"{Name} Gained {SpeedGained} speed from wild magic!");
-            Describe();
+            
+
+            HealthGained = 0;
+            HealthLost = 0;
+            DamageNegated = 0;
+            SpeedLost = 0;
+            SpeedGained = 0;
+            
 
 
         }

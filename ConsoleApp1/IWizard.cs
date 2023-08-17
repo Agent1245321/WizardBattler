@@ -23,6 +23,7 @@ namespace ConsoleApp1
         // 50%  chance to negate all damage and speeds up user concentrate (75%)
         public void Concentrate();
         //increases stats for other spells
+
        // public void Hinder();
         //slows enemy down 1-3 Concentrate(2-6)
         public void WildMagic();
