@@ -26,6 +26,8 @@ namespace ConsoleApp1
         public int DamageNegated { get; set; }
 
         public int SpeedGained { get; set; }
+
+        public int LastMove { get; set; }
         public Wizard(string name) 
         {
             Name = name;
@@ -187,6 +189,7 @@ namespace ConsoleApp1
             DamageNegated = 0;
             SpeedLost = 0;
             SpeedGained = 0;
+            Dodged = false;
             
 
 
