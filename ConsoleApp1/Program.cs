@@ -2,17 +2,17 @@
 using ConsoleApp1;
 
 Console.WriteLine("Welcome To Wizard Battle!");
-Wizard wiz1 = null;
-Wizard wiz2 = null;
+PyroMancer wiz1 = null;
+PyroMancer wiz2 = null;
 
 
 void StartGame2Player()
 {
     Console.WriteLine("Player 1, Name Your Wizard!");
-    wiz1 = new Wizard(Console.ReadLine());
+    wiz1 = new PyroMancer(Console.ReadLine());
 
     Console.WriteLine("Player 2, Name Your Wizard!");
-    wiz2 = new Wizard(Console.ReadLine());
+    wiz2 = new PyroMancer(Console.ReadLine());
 
     RoundStart();
 
@@ -22,10 +22,10 @@ void RoundStart()
 {
     if(wiz1.Health > 0 && wiz2.Health > 0)
     {
-            if (wiz1.Speed > wiz2.Speed) { Console.WriteLine($"{wiz1.Name} shall go first"); Wiz1Turn(); Wiz2Turn(); wiz1.EndRound(); wiz2.EndRound(); Console.WriteLine("\n \n \n Next Round..." +
+            if (wiz1.Speed > wiz2.Speed) { Console.WriteLine($"{wiz1.Name} shall go first"); Wiz1Turn(); Wiz2Turn(); Wiz1Spell(); Wiz2Spell(); wiz1.EndRound(); wiz2.EndRound(); Console.WriteLine("\n \n \n Next Round..." +
         "\n ------------------------------------------------------------------------"); RoundStart(); }
             else {
-        Console.WriteLine($"{wiz2.Name} shall go first"); Wiz2Turn(); Wiz1Turn(); wiz1.EndRound(); wiz2.EndRound(); Console.WriteLine("\n \n \n Next Round..." +
+        Console.WriteLine($"{wiz2.Name} shall go first"); Wiz2Turn(); Wiz1Turn(); Wiz2Spell(); Wiz1Spell();  wiz1.EndRound(); wiz2.EndRound(); Console.WriteLine("\n \n \n Next Round..." +
             "\n ------------------------------------------------------------------------"); RoundStart();
             }
     }
@@ -91,6 +91,38 @@ void Wiz1Turn()
     }
 }
 
+void Wiz1Spell()
+{
+    Console.WriteLine($"{wiz1.Name} choose your move...");
+    Console.WriteLine("\n 1: Firestorm \n 2: Burn \n 3: Smoke");
+    int move = Convert.ToInt32(Console.ReadLine());
+
+    switch (move)
+    {
+
+
+        case 1:
+            wiz1.Firestorm(wiz2);
+           
+            break;
+
+        case 2:
+            wiz1.Burn(wiz2);
+            
+            break;
+
+        case 3:
+            wiz1.Smoke();
+            break;
+
+        default:
+            Console.WriteLine("Not a valid move");
+            Wiz1Spell();
+            break;
+
+    }
+}
+
 void Wiz2Turn()
 {
     Console.WriteLine($"{wiz2.Name} choose your move...");
@@ -135,6 +167,38 @@ void Wiz2Turn()
     {
         Console.WriteLine("Can't do the same move twice in a row...");
         Wiz2Turn();
+    }
+}
+
+void Wiz2Spell()
+{
+    Console.WriteLine($"{wiz2.Name} choose your move...");
+    Console.WriteLine("\n 1: Firestorm \n 2: Burn \n 3: Smoke");
+    int move = Convert.ToInt32(Console.ReadLine());
+
+    switch (move)
+    {
+
+
+        case 1:
+            wiz2.Firestorm(wiz1);
+
+            break;
+
+        case 2:
+            wiz2.Burn(wiz1);
+
+            break;
+
+        case 3:
+            wiz2.Smoke();
+            break;
+
+        default:
+            Console.WriteLine("Not a valid move");
+            Wiz2Spell();
+            break;
+
     }
 }
 

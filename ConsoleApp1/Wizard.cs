@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Wizard : IWizard
+    public class Wizard : IWizard
     {
         Random rnd = new Random();
-        public string Name { get; private set; }
+        public string Name { get; protected set; }
         public int Health { get; set; }
         public int Speed { get; set; }
-        public bool Concentration { get; private set; }
+        public bool Concentration { get; protected set; }
 
         public int HealthLost { get; set; }
         public int SpeedLost { get; set; }
@@ -28,14 +28,9 @@ namespace ConsoleApp1
         public int SpeedGained { get; set; }
 
         public int LastMove { get; set; }
-        public Wizard(string name) 
-        {
-            Name = name;
-            Console.WriteLine($"The Wizard {Name} was born");
-            Health = 15;
-            Speed = rnd.Next(1, 5);
-            Console.WriteLine($"{Name} has {Health} health");
-        }
+
+        public int BurnCount { get; set; }
+       
 
         public void Attack(Wizard enemy)
         {
@@ -182,6 +177,8 @@ namespace ConsoleApp1
                     Describe();
                 }
             }
+
+            if(BurnCount > 0) { Health -= 1; BurnCount --; Console.WriteLine("Took 1 damage from burn...."); Describe(); }
             
 
             HealthGained = 0;
