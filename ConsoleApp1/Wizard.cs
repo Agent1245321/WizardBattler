@@ -39,6 +39,7 @@ namespace ConsoleApp1
             if (!Concentration) { enemy.HealthLost += roll; Console.WriteLine($"\n {Name} cast Fireball! it deals {roll} damage!"); }
             else { enemy.HealthLost += croll; Console.WriteLine($"\n {Name} cast FIRESTORM! it deals {croll} damage!"); }
             Speed = 2;
+            Concentration = false;
         }
 
         public void Defend()
